@@ -1,0 +1,58 @@
+name: advanced-hello-world
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+env:
+  APP_NAME: "My GitHub Actions App workflow ex01 Advance"
+jobs:
+  collect-info:
+    runs-on: ubuntu-latest
+    outputs:
+      repo-output: ${{steps.collect-repo.output.repo-name}}
+      actor-output: ${{steps.collect-actor.outputs.my-actor}}
+      os-output: ${{steps.collect-os.outputs.my-os}}
+    steps:
+      - id: collect-repo
+        run: echo "::set-output name=repo-name::${{github.repository}}"
+      - id: print repo-name
+        run: echo "repo name is ${{steps.collect-repo.output.repo-name}}"
+      
+      - id: collect-event
+        run: echo "::set-output name=event-name::${{github.event_name}}"
+      - id: print event-name
+        run: echo "Event name is ${{steps.collect-repo.output.event-name}}"
+
+      - id: collect-actor
+        run: |
+            echo "my-actor=${{ github.actor }}" >> $GITHUB_ENV # dung cho step print-actor-os
+            echo "::set-output name=my-actor::${{ github.actor }}" # dung cho step day output ra ngoai job
+
+      - id: collect-os
+        run: |
+            echo "my-os=${{ runner.os }}" >> $GITHUB_ENV # dung cho step print-actor-os
+            echo "::set-output name=my-os::${{ runner.os }}" # dung cho step day output ra ngoai job
+
+      - id: print-actor-os
+        env:
+          my-actor: ${{ env.my-actor }}
+          my-os: ${{ env.my-os }}
+        run: |
+          echo "Actor is $my-actor"
+          echo "OS is $my-os"
+  process-info:
+    runs-on: ubuntu-latest
+    needs: collect-info
+    steps:
+      - env:
+          repo-name: ${{needs.collect-info.outputs.repo-output}}
+          repo-actor: ${{needs.collect-info.outputs.actor-output}}
+          repo-os: ${{needs.collect-info.outputs.os-output}}
+        run: echo "$repo-name, $repo-actor, $repo-os"
+
+
