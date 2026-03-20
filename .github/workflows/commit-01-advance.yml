@@ -19,24 +19,22 @@ jobs:
       os-output: ${{steps.collect-os.outputs.my-os}}
     steps:
       - id: collect-repo
-        run: echo "::set-output name=repo-name::${{github.repository}}"
+        run: echo "repo-name=${{ github.repository }}" >> $GITHUB_ENV # dung cho step print_repo_name
+
       - id: print_repo_name
         run: echo "repo name is ${{steps.collect-repo.output.repo-name}}"
-      
+
       - id: collect-event
-        run: echo "::set-output name=event-name::${{github.event_name}}"
+        run: echo "event-name=${{ github.event_name }}" >> $GITHUB_ENV # dung cho step print_event_name
+
       - id: print_event_name
         run: echo "Event name is ${{steps.collect-event.outputs.event-name}}"
 
       - id: collect-actor
-        run: |
-            echo "my-actor=${{ github.actor }}" >> $GITHUB_ENV # dung cho step print-actor-os
-            echo "::set-output name=my-actor::${{ github.actor }}" # dung cho step day output ra ngoai job
+        run: echo "my-actor=${{ github.actor }}" >> $GITHUB_ENV # dung cho step print-actor-os
 
       - id: collect-os
-        run: |
-            echo "my-os=${{ runner.os }}" >> $GITHUB_ENV # dung cho step print-actor-os
-            echo "::set-output name=my-os::${{ runner.os }}" # dung cho step day output ra ngoai job
+        run: echo "my-os=${{ runner.os }}" >> $GITHUB_ENV # dung cho step print-actor-os
 
       - id: print-actor-os
         env:
