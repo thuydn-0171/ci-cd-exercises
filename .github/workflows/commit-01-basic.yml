@@ -15,7 +15,7 @@ jobs:
         run: echo "WWatsoi MCTHuy"
 
       - name: Grant execute permission
-        run: chmod +x exexercise-01-hello-world/my-time.sh
+        run: chmod +x exercise-01-hello-world/my-time.sh
 
       - name: print my time
         run: exercise-01-hello-world/my-time.sh
