@@ -8,12 +8,20 @@ jobs:
     name: say-hello
     runs-on: ubuntu-latest
     steps:
-      - run: echo "WWatsoi MCTHuy"
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: print my name
+        run: echo "WWatsoi MCTHuy"
+
       - name: print my time
         run: exercise-01-hello-world/my-time.sh
+
       - name: print runner name
         run: echo "runner name is ${{runner.name}}"
+
       - name: Print runner OS
         run: echo "Runner OS is ${{ runner.os }}"
+
       - name: Print system information
         run: uname -a
