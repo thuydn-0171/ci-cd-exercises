@@ -19,10 +19,10 @@ jobs:
       os-output: ${{steps.collect-os.outputs.my-os}}
     steps:
       - id: collect-repo
-        run: echo "repo-name=${{ github.repository }}" >> $GITHUB_ENV # dung cho step print_repo_name
+        run: echo "repo-name=${{ github.repository }}" # >> $GITHUB_ENV dung cho step print_repo_name
 
-      - id: print_repo_name
-        run: echo "repo name is ${{steps.collect-repo.output.repo-name}}"
+      # - id: print_repo_name
+      #   run: echo "repo name is ${{steps.collect-repo.output.repo-name}}"
 
       - id: collect-event
         run: echo "event-name=${{ github.event_name }}" >> $GITHUB_ENV # dung cho step print_event_name
