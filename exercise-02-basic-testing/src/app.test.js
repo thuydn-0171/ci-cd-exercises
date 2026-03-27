@@ -19,3 +19,12 @@ describe('add', () => {
     expect(add(-1, -2)).toBe(-3);
   });
 });
+
+describe('Integration tests', () => {
+  test('sayHello and add work together', () => {
+    const greeting = sayHello('Integration');
+    const sum = add(5, 10);
+    expect(greeting).toBe('Hello, Integration!');
+    expect(sum).toBe(15);
+  });
+});

@@ -3,7 +3,7 @@ function sayHello(name) {
 }
 
 function add(a, b) {
-  return a + b;
+  return a + b
 }
 
-module.exports = { sayHello, add };
+module.exports = { sayHello, add }
