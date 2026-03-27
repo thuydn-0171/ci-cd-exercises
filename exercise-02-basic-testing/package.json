@@ -1,0 +1,12 @@
+{
+  "name": "exercise-02-basic-testing",
+  "version": "1.0.0",
+  "description": "Simple Node.js Hello World app for CI testing",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
