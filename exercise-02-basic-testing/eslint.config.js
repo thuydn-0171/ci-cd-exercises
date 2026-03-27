@@ -11,9 +11,9 @@ export default [
       },
     },
     rules: {
-      semi: ['error', 'always'],
-      quotes: ['error', 'single'],
-      'no-unused-vars': ['warn'],
+      semi: 'error',
+      quotes: 'error',
+      'no-unused-vars': 'warn',
     },
   },
 ];
