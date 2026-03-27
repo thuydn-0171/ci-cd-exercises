@@ -3,7 +3,7 @@ export default [
   {
     languageOptions: {
       ecmaVersion: 2021,
-      sourceType: "module",
+      sourceType: 'module',
       globals: {
         browser: true,
         node: true,
@@ -11,9 +11,13 @@ export default [
       },
     },
     rules: {
-      semi: "error",
-      quotes: "error",
-      "no-unused-vars": "warn",
+      semi: ['error', 'always'],
+      quotes: ['error', 'single'],
+      'no-unused-vars': ['warn'],
+    },
+    settings: {
+      // Avoid structuredClone dependency
+      cloneFunction: (obj) => JSON.parse(JSON.stringify(obj)),
     },
   },
 ];
