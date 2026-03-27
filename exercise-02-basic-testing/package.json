@@ -4,7 +4,8 @@
   "description": "Simple Node.js Hello World app for CI testing",
   "main": "src/app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . -f json"
   },
   "devDependencies": {
     "eslint": "^10.1.0",
