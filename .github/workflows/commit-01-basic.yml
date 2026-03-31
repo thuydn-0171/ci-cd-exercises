@@ -5,7 +5,7 @@ on:
   #   branches:
   #     - main
 jobs:
-  say_hello:
+  hello-guys:
     name: say-hello
     runs-on: ubuntu-latest
     steps:
